@@ -1,27 +1,57 @@
-from funciones_calculadora import sumar_n_numeros, multiplicar_n_numeros, dividir_dos_numeros
+
+
+from sumar import sumar
+from resta import restar
+from multiplicacion import multiplicar
+from dividir import dividir
+from suma_av import suma_avanzada
 
 while True:
-    print ("""Bienvenido a mi calculadora, por favor, ingresa la opción que desees.
------------------------------------------------------------------------------------
-
-1) Hacer una suma de N números.
-2) Hacer una multiplicación de N números.
-3) Hacer una división de 2 números.
-
-0) Salir del programa.
-           
+    print("""
+Bienvenido a la Calculadora
+-----------------------------------------
+Selecciona una opción:
+1) Sumar 2 números
+2) Restar 2 números
+3) Multiplicar 2 números
+4) Dividir 2 números
+5) Sumar N números
+0) Salir
 """)
-    opcion = int(input("> "))
-    if opcion == 0:
+
+    opcion = input("> ")
+
+    if opcion == "0":
+        print("¡Hasta luego!")
         break
-    elif opcion == 1:
-        resultado = sumar_n_numeros()
-        print(f"El resultado de tu suma es: {resultado}")
-    elif opcion == 2:
-        resultado = multiplicar_n_numeros()
-        print(f"El resultado de tu multiplicación es: {resultado}")
-    elif opcion == 3:
-        resultado = dividir_dos_numeros()
-        print(f"El resultado de tu división es: {resultado}")
+
+    elif opcion == "1":
+        a = float(input("Ingresa el primer número: "))
+        b = float(input("Ingresa el segundo número: "))
+        print(f"Resultado: {sumar(a, b)}")
+
+    elif opcion == "2":
+        a = float(input("Ingresa el primer número: "))
+        b = float(input("Ingresa el segundo número: "))
+        print(f"Resultado: {restar(a, b)}")
+
+    elif opcion == "3":
+        a = float(input("Ingresa el primer número: "))
+        b = float(input("Ingresa el segundo número: "))
+        print(f"Resultado: {multiplicar(a, b)}")
+
+    elif opcion == "4":
+        a = float(input("Ingresa el dividendo: "))
+        b = float(input("Ingresa el divisor: "))
+        try:
+            print(f"Resultado: {dividir(a, b)}")
+        except ValueError as e:
+            print(f"Error: {e}")
+
+    elif opcion == "5":
+        resultado = suma_avanzada()
+        if resultado is not None:
+            print(f"Resultado: {resultado}")
+
     else:
-        print("Opción no válida. Por favor, elige una opción del 0 al 3.")
+        print("Opción no válida. Intenta de nuevo.")
